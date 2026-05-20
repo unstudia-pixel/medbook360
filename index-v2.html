@@ -1584,20 +1584,19 @@
      V2 NEW CONCEPT — Space Grotesk · centered hero · light sections
      ================================================================ */
 
-  /* Override hero to centered full-screen layout */
+  /* Override hero: full-width editorial banner layout */
   #hero-v2 {
     position:relative !important;
     overflow:hidden !important;
     min-height:100svh !important;
     display:flex !important;
     flex-direction:column !important;
-    align-items:center !important;
+    align-items:stretch !important;
     justify-content:flex-start !important;
     padding:0 !important;
     background:linear-gradient(155deg,#020618 0%,#050e38 30%,#041226 65%,#020810 100%) !important;
     font-family:'Space Grotesk',system-ui,sans-serif !important;
   }
-  /* hide the old 2-col .wrap grid */
   #hero-v2 > .wrap { display:none !important; }
 
   /* bg layers */
@@ -1605,34 +1604,62 @@
   .v2hbg-glow2 { position:absolute; bottom:-15%; right:-4%; width:760px; height:660px; background:radial-gradient(ellipse,rgba(0,196,168,.4) 0%,rgba(0,130,110,.14) 42%,transparent 70%); filter:blur(110px); pointer-events:none; z-index:0; }
   .v2hbg-grid { position:absolute; inset:0; z-index:0; opacity:.028; background-image:linear-gradient(rgba(100,160,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(100,160,255,1) 1px,transparent 1px); background-size:64px 64px; pointer-events:none; }
 
-  /* center content block */
-  .v2h-center { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; text-align:center; padding:132px 40px 60px; width:100%; max-width:920px; margin:0 auto; }
+  /* full-width inner container */
+  .v2h-center {
+    position:relative; z-index:2;
+    display:flex; flex-direction:column;
+    padding:116px 56px 0;
+    width:100%;
+  }
 
-  /* tag pill */
-  .v2h-tag { display:inline-flex; align-items:center; gap:9px; padding:8px 22px; border-radius:100px; background:rgba(43,128,255,.1); border:1px solid rgba(95,164,255,.3); font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:rgba(165,205,255,.88); margin-bottom:42px; font-family:'Space Grotesk',sans-serif; }
+  /* tag pill — left-aligned */
+  .v2h-tag { display:inline-flex; align-self:flex-start; align-items:center; gap:9px; padding:8px 22px; border-radius:100px; background:rgba(43,128,255,.1); border:1px solid rgba(95,164,255,.3); font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:rgba(165,205,255,.88); margin-bottom:44px; font-family:'Space Grotesk',sans-serif; }
   .v2h-tag-dot { width:7px; height:7px; border-radius:50%; background:#5fa4ff; box-shadow:0 0 10px rgba(95,164,255,.9),0 0 22px rgba(95,164,255,.4); flex-shrink:0; animation:v2dotpulse 2.2s ease-in-out infinite; }
   @keyframes v2dotpulse { 0%,100%{transform:scale(1);opacity:.75} 50%{transform:scale(1.5);opacity:1} }
 
-  /* headline */
-  .v2h-h1 { font-size:clamp(46px,7vw,92px); font-weight:700; line-height:1.04; letter-spacing:-.038em; color:#fff; margin-bottom:26px; font-family:'Space Grotesk',sans-serif; }
-  .v2h-em { background:linear-gradient(90deg,#70bbff 0%,#00dfc0 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-style:normal; }
+  /* full-width banner headline */
+  .v2h-h1 {
+    font-size: clamp(52px, 9vw, 136px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -.04em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    white-space: nowrap;
+  }
+  /* accent line — smaller, gradient */
+  .v2h-accent-line {
+    font-size: clamp(28px, 4.8vw, 72px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -.025em;
+    color: rgba(185,215,255,.55);
+    margin: 0 0 52px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .v2h-accent-line em {
+    font-style: normal;
+    background: linear-gradient(90deg, #70bbff 0%, #00dfc0 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
 
-  /* subtitle */
-  .v2h-sub { font-size:17.5px; line-height:1.7; color:rgba(185,215,255,.6); max-width:540px; margin-bottom:44px; font-weight:400; font-family:'Space Grotesk',sans-serif; }
+  /* bottom row: subtitle left, CTAs right */
+  .v2h-bottom { display:flex; align-items:flex-end; justify-content:space-between; gap:48px; padding-bottom:52px; border-bottom:1px solid rgba(255,255,255,.07); margin-bottom:40px; }
+  .v2h-sub { font-size:17px; line-height:1.72; color:rgba(185,215,255,.58); max-width:440px; font-weight:400; font-family:'Space Grotesk',sans-serif; }
+  .v2h-ctas { display:flex; gap:14px; flex-wrap:wrap; flex-shrink:0; }
 
-  /* CTAs */
-  .v2h-ctas { display:flex; gap:14px; justify-content:center; margin-bottom:64px; flex-wrap:wrap; }
-
-  /* stats bar */
-  .v2h-statsbar { display:flex; align-items:stretch; border:1px solid rgba(255,255,255,.09); border-radius:20px; background:rgba(255,255,255,.04); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); overflow:hidden; margin-bottom:32px; }
-  .v2h-sb-item { padding:22px 38px; display:flex; flex-direction:column; align-items:center; gap:5px; }
-  .v2h-sb-item+.v2h-sb-item { border-left:1px solid rgba(255,255,255,.07); }
-  .v2h-sb-n { font-size:22px; font-weight:700; color:#fff; letter-spacing:-.025em; font-family:'Space Grotesk',sans-serif; }
+  /* stats bar — full width, left-aligned items */
+  .v2h-statsbar { display:flex; align-items:stretch; gap:0; padding-bottom:40px; }
+  .v2h-sb-item { display:flex; flex-direction:column; gap:5px; padding-right:44px; }
+  .v2h-sb-item+.v2h-sb-item { padding-left:44px; border-left:1px solid rgba(255,255,255,.1); }
+  .v2h-sb-n { font-size:26px; font-weight:700; color:#fff; letter-spacing:-.03em; font-family:'Space Grotesk',sans-serif; }
   .v2h-sb-l { font-size:10px; color:rgba(150,190,255,.5); letter-spacing:.1em; text-transform:uppercase; font-weight:600; font-family:'Space Grotesk',sans-serif; }
-  .v2h-micro { font-size:12px; color:rgba(150,190,255,.28); letter-spacing:.05em; font-family:'Space Grotesk',sans-serif; }
+  .v2h-micro { display:none; }
 
   /* network SVG decoration */
-  .v2h-network { position:relative; z-index:1; width:100%; max-width:1160px; margin:-10px auto 0; pointer-events:none; opacity:.85; }
+  .v2h-network { position:relative; z-index:1; width:100%; margin:0; pointer-events:none; opacity:.7; }
   .v2h-network svg { display:block; width:100%; height:auto; }
 
   /* ---- Problem section: LIGHT editorial ---- */
@@ -1723,33 +1750,31 @@
   <div class="v2hbg-glow2"></div>
   <div class="v2hbg-grid"></div>
 
-  <!-- centered text block -->
+  <!-- full-width content block -->
   <div class="v2h-center">
 
-    <!-- network tag -->
+    <!-- network tag pill -->
     <div class="v2h-tag">
       <span class="v2h-tag-dot"></span>
       CommonWell &nbsp;·&nbsp; Carequality &nbsp;·&nbsp; TEFCA
     </div>
 
-    <!-- headline -->
-    <h1 class="v2h-h1">
-      From fragmented<br>
-      <em class="v2h-em">records</em> to a clear<br>
-      patient timeline<br>
-      — in <em class="v2h-em">seconds.</em>
-    </h1>
+    <!-- full-width banner headline -->
+    <h1 class="v2h-h1">From Fragmented Records</h1>
+    <h1 class="v2h-h1">To a Clear Patient</h1>
+    <h1 class="v2h-h1">Timeline.</h1>
+    <p class="v2h-accent-line">— in <em>seconds.</em></p>
 
-    <!-- subtitle -->
-    <p class="v2h-sub">Pull a new patient's full medical history from CommonWell, Carequality, and TEFCA. Organized, deduplicated, and ready for review before the first appointment.</p>
-
-    <!-- CTAs -->
-    <div class="v2h-ctas">
-      <a href="#demo" class="btn btn-p btn-lg">See It In Action&nbsp;&nbsp;→</a>
-      <a href="#demo" class="btn btn-g btn-lg">Talk to Sales</a>
+    <!-- bottom row: subtitle left · CTAs right -->
+    <div class="v2h-bottom">
+      <p class="v2h-sub">Pull a new patient's full medical history from CommonWell, Carequality, and TEFCA. Organized, deduplicated, and ready for review before the first appointment.</p>
+      <div class="v2h-ctas">
+        <a href="#demo" class="btn btn-p btn-lg">See It In Action&nbsp;&nbsp;→</a>
+        <a href="#demo" class="btn btn-g btn-lg">Talk to Sales</a>
+      </div>
     </div>
 
-    <!-- inline stats bar -->
+    <!-- stats row -->
     <div class="v2h-statsbar">
       <div class="v2h-sb-item">
         <span class="v2h-sb-n">&lt;&nbsp;1 min</span>
@@ -1769,7 +1794,6 @@
       </div>
     </div>
 
-    <p class="v2h-micro">No EMR integration required. Works alongside your existing workflow.</p>
   </div>
 
   <!-- decorative data-network SVG at bottom -->

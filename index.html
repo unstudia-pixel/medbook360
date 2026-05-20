@@ -153,45 +153,71 @@
      NAV
   ═══════════════════════════════════════════════════════ */
   #nav{
-    position:fixed;top:0;left:0;right:0;z-index:500;height:66px;
-    display:flex;align-items:center;padding:0 28px;
-    background:rgba(5,7,14,.45);
-    backdrop-filter:blur(28px) saturate(180%);
-    -webkit-backdrop-filter:blur(28px) saturate(180%);
-    border-bottom:1px solid rgba(255,255,255,.05);
-    transition:background .3s,border-color .3s;
+    position:fixed;top:16px;left:50%;transform:translateX(-50%);
+    z-index:500;height:58px;
+    width:calc(100% - 48px);max-width:1160px;
+    display:flex;align-items:center;padding:0 8px 0 24px;
+    background:rgba(4,9,26,.72);
+    backdrop-filter:blur(32px) saturate(200%) brightness(1.08);
+    -webkit-backdrop-filter:blur(32px) saturate(200%) brightness(1.08);
+    border:1px solid rgba(255,255,255,.1);
+    border-top-color:rgba(255,255,255,.16);
+    border-radius:16px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.1),
+      0 8px 40px rgba(0,0,20,.65),
+      0 0 0 1px rgba(43,128,255,.07),
+      0 0 80px rgba(43,128,255,.05);
+    transition:background .3s,box-shadow .3s;
+  }
+  #nav::before{
+    content:'';position:absolute;
+    top:0;left:15%;right:15%;height:1px;border-radius:100px;
+    background:linear-gradient(90deg,transparent,rgba(59,130,246,.6),rgba(0,196,168,.35),transparent);
   }
   #nav.scrolled{
-    background:rgba(5,7,14,.88);
-    border-bottom-color:rgba(43,128,255,.18);
+    background:rgba(4,9,26,.9);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.1),
+      0 8px 40px rgba(0,0,20,.8),
+      0 0 0 1px rgba(43,128,255,.12);
   }
   .nav-in{
-    max-width:1180px;margin:0 auto;width:100%;
+    max-width:100%;margin:0;width:100%;
     display:flex;align-items:center;justify-content:space-between;gap:24px;
   }
   .nav-links{display:flex;gap:32px;list-style:none}
   .nav-links a{font-size:14px;font-weight:500;color:var(--t2);transition:color .15s}
   .nav-links a:hover{color:var(--t1)}
-  .nav-r{display:flex;gap:10px;align-items:center}
+  .nav-r{display:flex;gap:8px;align-items:center}
   .nav-login{
-    font-size:13.5px;font-weight:500;color:var(--t2);padding:7px 15px;
-    border-radius:9px;border:1px solid rgba(255,255,255,.07);
-    backdrop-filter:blur(10px);transition:all .15s;
+    font-size:13px;font-weight:500;color:rgba(255,255,255,.65);
+    padding:8px 16px;border-radius:10px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.03);
+    backdrop-filter:blur(12px);transition:all .2s;
   }
-  .nav-login:hover{color:var(--t1);border-color:rgba(255,255,255,.14)}
+  .nav-login:hover{color:#fff;border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.07)}
   .nav-cta{
-    font-size:13.5px;font-weight:700;color:#fff;padding:8px 18px;
-    border-radius:9px;background:var(--blue);
-    box-shadow:0 0 16px rgba(43,128,255,.3);transition:all .15s;
+    font-size:13px;font-weight:700;color:#fff;padding:9px 20px;
+    border-radius:10px;
+    background:linear-gradient(135deg,#3b82f6 0%,#2563eb 50%,#1d4ed8 100%);
+    border:1px solid rgba(147,197,253,.25);
+    box-shadow:0 0 22px rgba(59,130,246,.5),0 2px 12px rgba(0,0,40,.3),inset 0 1px 0 rgba(255,255,255,.2);
+    transition:all .2s;
   }
-  .nav-cta:hover{background:var(--bluel);box-shadow:0 0 28px rgba(43,128,255,.5);transform:translateY(-1px)}
+  .nav-cta:hover{
+    background:linear-gradient(135deg,#60a5fa 0%,#3b82f6 50%,#2563eb 100%);
+    box-shadow:0 0 36px rgba(59,130,246,.7),0 4px 18px rgba(0,0,40,.4);
+    transform:translateY(-1px);
+  }
 
   /* ═══════════════════════════════════════════════════════
      HERO
   ═══════════════════════════════════════════════════════ */
   #hero{
     min-height:100vh;display:flex;align-items:center;
-    padding-top:66px;position:relative;overflow:hidden;
+    padding-top:96px;position:relative;overflow:hidden;
   }
 
   /* background layers */
@@ -232,14 +258,24 @@
 
   /* eyebrow */
   .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    background:rgba(43,128,255,.1);
-    border:1px solid rgba(43,128,255,.25);
-    border-radius:100px;padding:5px 14px;
-    font-size:11.5px;font-weight:600;color:var(--bluel);
-    margin-bottom:28px;letter-spacing:.02em;
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(6,14,38,.6);
+    border:1px solid rgba(95,164,255,.35);
+    border-radius:100px;padding:6px 16px 6px 10px;
+    font-size:11px;font-weight:600;color:rgba(180,210,255,.9);
+    margin-bottom:28px;letter-spacing:.06em;text-transform:uppercase;
+    backdrop-filter:blur(12px);
+    box-shadow:
+      0 0 18px rgba(43,128,255,.25),
+      0 0 40px rgba(43,128,255,.08),
+      inset 0 1px 0 rgba(255,255,255,.08);
   }
-  .ey-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:blink 2.4s infinite}
+  .ey-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--teal);flex-shrink:0;
+    box-shadow:0 0 8px rgba(0,196,168,.9),0 0 16px rgba(0,196,168,.5);
+    animation:blink 2.4s infinite;
+  }
 
   /* hero headline */
   .hero-h{
@@ -783,10 +819,10 @@
   .h2-content{position:relative;z-index:5;text-align:left;min-width:0}
   .h2-eyebrow{margin-bottom:28px}
   .h2-h{
-    font-size:clamp(28px,3vw,46px);font-weight:300;line-height:1.12;
+    font-size:clamp(28px,3vw,46px);font-weight:500;line-height:1.12;
     letter-spacing:-.025em;margin-bottom:26px;
   }
-  .h2-h em.gt{font-weight:300;font-style:normal}
+  .h2-h em.gt{font-weight:500;font-style:normal}
   .h2-sub{
     font-size:17px;color:var(--t2);line-height:1.7;
     max-width:420px;margin:0 0 38px;
@@ -879,28 +915,21 @@
   }
   .info-btn-teal{background:rgba(0,196,168,.12);border-color:rgba(0,196,168,.3);color:var(--teal)}
 
-  /* Patient Lookup redesign */
-  .pl-field{margin-bottom:7px}
-  .pl-label{
-    font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;
-    color:var(--t3);margin-bottom:4px;
+  /* Patient Lookup compact */
+  .pl-row{
+    display:flex;align-items:center;gap:10px;
+    padding:9px 0 10px;border-bottom:1px solid rgba(255,255,255,.06);
+    margin-bottom:10px;
   }
-  .pl-input{
-    background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.08);
-    border-radius:6px;padding:6px 9px;
-    display:flex;align-items:center;gap:6px;
+  .pl-av{
+    width:32px;height:32px;border-radius:50%;flex-shrink:0;
+    background:linear-gradient(135deg,rgba(43,128,255,.35),rgba(0,196,168,.25));
+    border:1px solid rgba(43,128,255,.35);
+    display:flex;align-items:center;justify-content:center;
+    font-size:10px;font-weight:700;color:var(--bluel);letter-spacing:.04em;
   }
-  .pl-input.pl-focus{
-    border-color:rgba(43,128,255,.5);
-    box-shadow:0 0 0 2px rgba(43,128,255,.1),inset 0 1px 0 rgba(255,255,255,.04);
-  }
-  .pl-ico{color:var(--t3);flex-shrink:0;display:flex}
-  .pl-val{font-size:10px;color:var(--t1);font-family:var(--fm);flex:1;letter-spacing:.01em}
-  .pl-mask{font-size:10px;color:rgba(255,255,255,.25);font-family:var(--fm);letter-spacing:.08em}
-  .pl-cur{
-    width:1px;height:11px;background:var(--bluel);flex-shrink:0;
-    animation:blink .9s ease-in-out infinite;
-  }
+  .pl-name{font-size:11.5px;font-weight:600;color:var(--t1);margin-bottom:2px}
+  .pl-dob{font-size:9px;color:var(--t3);font-family:var(--fm)}
 
 
   .info-big-num{
@@ -918,10 +947,10 @@
     margin:10px 0 10px;
   }
   .info-bar-seg{height:100%;border-radius:4px}
-  .info-pills{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+  .info-pills{display:flex;gap:4px;flex-wrap:nowrap;margin-bottom:10px}
   .info-pill{
-    font-size:9px;font-weight:600;padding:3px 7px;border-radius:20px;
-    font-family:var(--fm);letter-spacing:.03em;
+    font-size:8px;font-weight:600;padding:2px 6px;border-radius:20px;
+    font-family:var(--fm);letter-spacing:.03em;white-space:nowrap;
   }
   .info-pill-blue{background:rgba(43,128,255,.15);color:var(--bluel);border:1px solid rgba(43,128,255,.25)}
   .info-pill-teal{background:rgba(0,196,168,.12);color:var(--teal);border:1px solid rgba(0,196,168,.22)}
@@ -1150,35 +1179,13 @@
       <!-- Bottom Left: Patient Lookup -->
       <div class="info-card info-bl">
         <div class="info-card-h">Patient Lookup</div>
-
-        <div class="pl-field">
-          <div class="pl-label">Patient Name</div>
-          <div class="pl-input pl-focus">
-            <span class="pl-ico">
-              <svg width="9" height="9" viewBox="0 0 12 12" fill="none">
-                <circle cx="5" cy="5" r="3.8" stroke="currentColor" stroke-width="1.4"/>
-                <path d="M8 8L10.5 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <span class="pl-val">Sarah M.</span>
-            <span class="pl-cur"></span>
+        <div class="pl-row">
+          <div class="pl-av">SM</div>
+          <div class="pl-meta">
+            <div class="pl-name">Sarah Mitchell</div>
+            <div class="pl-dob">Apr 17, 1982</div>
           </div>
         </div>
-
-        <div class="pl-field">
-          <div class="pl-label">Date of Birth</div>
-          <div class="pl-input">
-            <span class="pl-mask">██ / ██ / 19██</span>
-          </div>
-        </div>
-
-        <div class="pl-field" style="margin-bottom:10px">
-          <div class="pl-label">MRN</div>
-          <div class="pl-input">
-            <span class="pl-mask">███ – ████</span>
-          </div>
-        </div>
-
         <button class="info-btn">Search Records →</button>
       </div>
 

@@ -1678,72 +1678,55 @@
     border-radius: 100px !important;
   }
 
-  /* Primary: solid white fill, dark text */
+  /* Primary: blue→teal gradient fill, white text */
   .btn-p {
-    background: #ffffff !important;
-    color: #0d1a2e !important;
-    border: 2px solid #ffffff !important;
-    box-shadow: 0 4px 24px rgba(255,255,255,.14), 0 1px 6px rgba(0,0,0,.2) !important;
+    background: linear-gradient(120deg, #2b80ff 0%, #00c4a8 100%) !important;
+    color: #fff !important;
+    border: 2px solid transparent !important;
+    box-shadow: 0 4px 28px rgba(43,128,255,.45), 0 0 60px rgba(0,196,168,.18) !important;
+    position: relative !important;
   }
   .btn-p:hover {
-    background: transparent !important;
-    color: #ffffff !important;
-    border-color: #ffffff !important;
-    box-shadow: 0 0 32px rgba(255,255,255,.1), 0 4px 20px rgba(0,0,0,.3) !important;
+    background: linear-gradient(120deg, #5fa4ff 0%, #00dfc0 100%) !important;
+    box-shadow: 0 6px 36px rgba(43,128,255,.6), 0 0 80px rgba(0,196,168,.25) !important;
     transform: translateY(-2px) !important;
   }
 
-  /* Secondary: blue stroke, transparent fill */
+  /* Secondary: gradient stroke, transparent fill */
   .btn-g {
     background: transparent !important;
-    color: rgba(255,255,255,.82) !important;
-    border: 2px solid rgba(95,164,255,.55) !important;
+    color: rgba(255,255,255,.85) !important;
+    border: 2px solid transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     box-shadow: none !important;
+    background-clip: padding-box !important;
+    position: relative !important;
+    /* gradient border trick */
+    background-image: none !important;
+    outline: none !important;
+    box-shadow: inset 0 0 0 2px rgba(95,164,255,.5) !important;
   }
   .btn-g:hover {
-    background: rgba(43,128,255,.12) !important;
+    background: rgba(43,128,255,.1) !important;
     color: #ffffff !important;
-    border-color: rgba(95,164,255,.9) !important;
-    box-shadow: 0 0 24px rgba(43,128,255,.2) !important;
+    box-shadow: inset 0 0 0 2px rgba(95,164,255,.9), 0 0 24px rgba(43,128,255,.2) !important;
     transform: translateY(-2px) !important;
   }
 
-  /* Nav CTA — white capsule */
+  /* Nav CTA — gradient pill */
   .nav-cta {
-    background: #ffffff !important;
-    color: #0d1a2e !important;
-    border: 2px solid #ffffff !important;
+    background: linear-gradient(120deg, #2b80ff 0%, #00c4a8 100%) !important;
+    color: #fff !important;
+    border: none !important;
     border-radius: 100px !important;
     font-family: 'Space Grotesk', sans-serif !important;
     font-weight: 600 !important;
-    box-shadow: none !important;
+    box-shadow: 0 2px 18px rgba(43,128,255,.35) !important;
   }
   .nav-cta:hover {
-    background: transparent !important;
-    color: #ffffff !important;
-    border-color: rgba(255,255,255,.7) !important;
-  }
-
-  /* Light-section buttons (problem section, demo CTA, etc.) */
-  #problem .btn-p,
-  #demo .btn-p {
-    background: #2b80ff !important;
-    color: #fff !important;
-    border-color: #2b80ff !important;
-    box-shadow: 0 4px 24px rgba(43,128,255,.35) !important;
-  }
-  #problem .btn-p:hover,
-  #demo .btn-p:hover {
-    background: transparent !important;
-    color: #2b80ff !important;
-    border-color: #2b80ff !important;
-    box-shadow: 0 0 24px rgba(43,128,255,.18) !important;
-  }
-  #demo .btn-g {
-    border-color: rgba(255,255,255,.5) !important;
-    color: rgba(255,255,255,.8) !important;
+    background: linear-gradient(120deg, #5fa4ff 0%, #00dfc0 100%) !important;
+    box-shadow: 0 4px 28px rgba(43,128,255,.5) !important;
   }
 
   /* ---- Problem section: LIGHT editorial ---- */

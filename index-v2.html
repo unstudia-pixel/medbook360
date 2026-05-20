@@ -1,30 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
-  <style id="capture-overrides">
-    *, *::before, *::after {
-      animation-duration: 0.001s !important;
-      animation-delay: 0s !important;
-      transition-duration: 0s !important;
-    }
-    /* Force dark background directly on the section so capture doesn't lose it */
-    #hero-v2, body, html {
-      background: #05070e !important;
-    }
-    /* Ensure text colours are set directly, not relying on CSS variables */
-    .h2-h, .h2-sub, .h2-micro, .h2-feat-title, .nw-chip,
-    .h2-btns a, .h2-features, .h2-sep {
-      opacity: 1 !important;
-      visibility: visible !important;
-    }
-  </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MedBook360 — Patient Records, Unfragmented</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
 
   /* ═══════════════════════════════════════════════════════
@@ -1429,6 +1412,259 @@
     font-size:12.5px;font-weight:600;color:var(--t2);letter-spacing:.01em;
   }
 
+  /* ═══════════════════════════════════════════════════════
+     V2 VIBRANT OVERRIDES — added for colorful/tech theme
+  ═══════════════════════════════════════════════════════ */
+
+  /* 1. Root token additions */
+  :root {
+    --bg:  #030510;
+    --bg1: #060820;
+    --grad-sec-a: linear-gradient(160deg, #060d2e 0%, #03111f 60%, #04151a 100%);
+    --grad-sec-b: linear-gradient(160deg, #040d1a 0%, #061824 60%, #060f20 100%);
+    --grad-hero:  linear-gradient(135deg, #050a20 0%, #0a1540 35%, #061a2a 65%, #040e18 100%);
+  }
+
+  /* 2. Section gradient backgrounds — vivid, distinct per section */
+  #hero-v2        { background: linear-gradient(145deg, #04082a 0%, #071840 40%, #040f28 70%, #020810 100%) !important; }
+  /* Problem: deep violet-purple */
+  #problem        { background: linear-gradient(150deg, #10062e 0%, #160840 50%, #0a0630 80%, #080420 100%); }
+  /* Solution: rich cobalt-navy */
+  #solution       { background: linear-gradient(155deg, #04103e 0%, #071a52 45%, #051430 75%, #030a20 100%); }
+  /* Features: deep teal-ocean */
+  #features       { background: linear-gradient(145deg, #022830 0%, #043840 40%, #022420 70%, #021218 100%); }
+  /* Personas: indigo-violet night */
+  #personas       { background: linear-gradient(150deg, #0c083a 0%, #14104e 40%, #0a0a34 70%, #060620 100%); }
+  /* No-integration: emerald-teal abyss */
+  #no-integration { background: linear-gradient(145deg, #012422 0%, #023430 40%, #011e1a 70%, #010e0e 100%); }
+  /* FAQ: deep cosmic violet */
+  #faq            { background: linear-gradient(150deg, #0e062e 0%, #160a40 40%, #0a0828 70%, #060418 100%); }
+  /* Demo: vivid electric blue */
+  #demo           { background: linear-gradient(145deg, #050f3a 0%, #0a1c52 40%, #060f30 70%, #030820 100%) !important; }
+
+  /* 2b. Per-section ambient glow blobs — vivid & large */
+  #problem::after {
+    content:''; position:absolute; top:-80px; right:-100px;
+    width:700px; height:500px;
+    background: radial-gradient(ellipse, rgba(120,40,255,.38) 0%, rgba(80,20,200,.18) 40%, transparent 70%);
+    filter:blur(90px); pointer-events:none; z-index:0;
+  }
+  #problem::before {
+    background: linear-gradient(90deg, transparent 0%, rgba(110,40,240,.25) 30%, rgba(43,128,255,.25) 70%, transparent 100%) !important;
+  }
+  #solution::after {
+    content:''; position:absolute; bottom:-100px; left:-80px;
+    width:750px; height:520px;
+    background: radial-gradient(ellipse, rgba(30,100,255,.42) 0%, rgba(20,70,200,.2) 40%, transparent 70%);
+    filter:blur(100px); pointer-events:none; z-index:0;
+  }
+  #features::after {
+    content:''; position:absolute; top:-60px; left:50%; transform:translateX(-50%);
+    width:800px; height:500px;
+    background: radial-gradient(ellipse, rgba(0,196,168,.35) 0%, rgba(0,160,140,.15) 40%, transparent 70%);
+    filter:blur(110px); pointer-events:none; z-index:0;
+  }
+  #personas::after {
+    content:''; position:absolute; bottom:-80px; right:-100px;
+    width:720px; height:500px;
+    background: radial-gradient(ellipse, rgba(90,50,240,.4) 0%, rgba(60,30,200,.18) 40%, transparent 70%);
+    filter:blur(95px); pointer-events:none; z-index:0;
+  }
+  #no-integration::after {
+    content:''; position:absolute; top:-60px; left:-80px;
+    width:700px; height:480px;
+    background: radial-gradient(ellipse, rgba(0,200,160,.38) 0%, rgba(0,160,130,.18) 40%, transparent 70%);
+    filter:blur(100px); pointer-events:none; z-index:0;
+  }
+  #faq::after {
+    content:''; position:absolute; bottom:-80px; right:-60px;
+    width:660px; height:460px;
+    background: radial-gradient(ellipse, rgba(100,30,240,.38) 0%, rgba(70,20,200,.18) 40%, transparent 70%);
+    filter:blur(90px); pointer-events:none; z-index:0;
+  }
+  #demo::after {
+    content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:900px; height:600px;
+    background: radial-gradient(ellipse, rgba(43,128,255,.45) 0%, rgba(30,90,220,.22) 40%, transparent 70%);
+    filter:blur(110px); pointer-events:none; z-index:0;
+  }
+
+  /* 3. Section divider hairlines — more vivid */
+  .sec { position: relative; overflow:hidden; }
+  .sec::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 3; pointer-events: none;
+    background: linear-gradient(90deg, transparent 0%, rgba(43,128,255,.35) 25%, rgba(0,196,168,.35) 75%, transparent 100%);
+  }
+
+  /* 4. Card variables — more vibrant */
+  :root {
+    --gb:  rgba(43,128,255,.05);
+    --gbb: rgba(0,196,168,.04);
+    --gbd: rgba(95,164,255,.12);
+  }
+
+  .step-card {
+    background: rgba(43,128,255,.05);
+    border: 1px solid rgba(95,164,255,.14);
+    box-shadow: inset 0 1px 0 rgba(95,164,255,.08), 0 12px 48px rgba(0,0,0,.4), 0 0 40px rgba(43,128,255,.06);
+  }
+  .per-card {
+    background: rgba(43,128,255,.05);
+    border: 1px solid rgba(95,164,255,.12);
+  }
+  .faq-it {
+    background: rgba(43,128,255,.04);
+    border: 1px solid rgba(95,164,255,.1);
+  }
+
+  /* 5. Feature cards — vibrant colored top borders */
+  .fc-card { background: rgba(43,128,255,.05); border: 1px solid rgba(95,164,255,.13); }
+  .fc-card:nth-child(1) { border-top-color: rgba(95,164,255,.5); }
+  .fc-card:nth-child(2) { border-top-color: rgba(0,196,168,.5); }
+  .fc-card:nth-child(3) { border-top-color: rgba(95,164,255,.45); }
+  .fc-card:nth-child(4) { border-top-color: rgba(0,196,168,.45); }
+  .fc-card:nth-child(5) { border-top-color: rgba(95,164,255,.4); }
+  .fc-card:nth-child(6) { border-top-color: rgba(0,196,168,.4); }
+
+  /* 6. Hero — vivid background + stronger ambient glow */
+  #hero-v2 { background: linear-gradient(145deg, #04082a 0%, #071840 40%, #040f28 70%, #020810 100%); }
+  .h2-glow {
+    background: radial-gradient(ellipse, rgba(43,128,255,.95) 0%, rgba(43,128,255,.45) 40%, transparent 70%);
+    filter: blur(100px);
+  }
+
+  /* 7. Section labels — gradient text */
+  .lbl {
+    font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    background: linear-gradient(90deg, #5fa4ff, #00c4a8);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    display: inline-block;
+  }
+
+  /* 8. Section headings — larger */
+  .sec-h { font-size: clamp(32px, 4.5vw, 54px); }
+
+  /* 9. Step arrows — more visible */
+  .step-arr path { stroke: rgba(95,164,255,.35) !important; }
+
+  /* 10. FAQ list — increased gap */
+  .faq-list { gap: 18px; }
+
+  /* 11. Noise overlay — slightly more visible */
+  .noise { opacity: .025; }
+
+  /* 12. Stats strip — more glow on edges */
+  #stats-strip::after {
+    background: linear-gradient(90deg, rgba(0,5,30,.6) 0%, transparent 10%, transparent 90%, rgba(0,20,10,.6) 100%);
+  }
+
+  /* 13. Navigation — glassmorphism */
+  #nav {
+    background: rgba(3,5,16,.75);
+    backdrop-filter: blur(24px) saturate(200%);
+    border-bottom: 1px solid rgba(95,164,255,.1);
+  }
+  #nav.scrolled {
+    background: rgba(3,5,16,.88);
+    border-bottom-color: rgba(95,164,255,.12);
+  }
+
+  /* 14. CTA section override (more dramatic) */
+  #demo { background: linear-gradient(145deg, #050f3a 0%, #0a1c52 40%, #060f30 70%, #030820 100%) !important; }
+
+  /* 15. Hero heading gradient — brighter */
+  .h2v-sub {
+    background: linear-gradient(95deg, #60aaff 0%, #00dfc0 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+
+  /* ================================================================
+     V2 NEW CONCEPT — Space Grotesk · centered hero · light sections
+     ================================================================ */
+
+  /* Override hero to centered full-screen layout */
+  #hero-v2 {
+    position:relative !important;
+    overflow:hidden !important;
+    min-height:100svh !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    padding:0 !important;
+    background:linear-gradient(155deg,#020618 0%,#050e38 30%,#041226 65%,#020810 100%) !important;
+    font-family:'Space Grotesk',system-ui,sans-serif !important;
+  }
+  /* hide the old 2-col .wrap grid */
+  #hero-v2 > .wrap { display:none !important; }
+
+  /* bg layers */
+  .v2hbg-glow1 { position:absolute; top:-10%; left:-6%; width:960px; height:760px; background:radial-gradient(ellipse,rgba(43,128,255,.55) 0%,rgba(20,60,220,.2) 42%,transparent 70%); filter:blur(120px); pointer-events:none; z-index:0; }
+  .v2hbg-glow2 { position:absolute; bottom:-15%; right:-4%; width:760px; height:660px; background:radial-gradient(ellipse,rgba(0,196,168,.4) 0%,rgba(0,130,110,.14) 42%,transparent 70%); filter:blur(110px); pointer-events:none; z-index:0; }
+  .v2hbg-grid { position:absolute; inset:0; z-index:0; opacity:.028; background-image:linear-gradient(rgba(100,160,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(100,160,255,1) 1px,transparent 1px); background-size:64px 64px; pointer-events:none; }
+
+  /* center content block */
+  .v2h-center { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; text-align:center; padding:132px 40px 60px; width:100%; max-width:920px; margin:0 auto; }
+
+  /* tag pill */
+  .v2h-tag { display:inline-flex; align-items:center; gap:9px; padding:8px 22px; border-radius:100px; background:rgba(43,128,255,.1); border:1px solid rgba(95,164,255,.3); font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:rgba(165,205,255,.88); margin-bottom:42px; font-family:'Space Grotesk',sans-serif; }
+  .v2h-tag-dot { width:7px; height:7px; border-radius:50%; background:#5fa4ff; box-shadow:0 0 10px rgba(95,164,255,.9),0 0 22px rgba(95,164,255,.4); flex-shrink:0; animation:v2dotpulse 2.2s ease-in-out infinite; }
+  @keyframes v2dotpulse { 0%,100%{transform:scale(1);opacity:.75} 50%{transform:scale(1.5);opacity:1} }
+
+  /* headline */
+  .v2h-h1 { font-size:clamp(46px,7vw,92px); font-weight:700; line-height:1.04; letter-spacing:-.038em; color:#fff; margin-bottom:26px; font-family:'Space Grotesk',sans-serif; }
+  .v2h-em { background:linear-gradient(90deg,#70bbff 0%,#00dfc0 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-style:normal; }
+
+  /* subtitle */
+  .v2h-sub { font-size:17.5px; line-height:1.7; color:rgba(185,215,255,.6); max-width:540px; margin-bottom:44px; font-weight:400; font-family:'Space Grotesk',sans-serif; }
+
+  /* CTAs */
+  .v2h-ctas { display:flex; gap:14px; justify-content:center; margin-bottom:64px; flex-wrap:wrap; }
+
+  /* stats bar */
+  .v2h-statsbar { display:flex; align-items:stretch; border:1px solid rgba(255,255,255,.09); border-radius:20px; background:rgba(255,255,255,.04); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); overflow:hidden; margin-bottom:32px; }
+  .v2h-sb-item { padding:22px 38px; display:flex; flex-direction:column; align-items:center; gap:5px; }
+  .v2h-sb-item+.v2h-sb-item { border-left:1px solid rgba(255,255,255,.07); }
+  .v2h-sb-n { font-size:22px; font-weight:700; color:#fff; letter-spacing:-.025em; font-family:'Space Grotesk',sans-serif; }
+  .v2h-sb-l { font-size:10px; color:rgba(150,190,255,.5); letter-spacing:.1em; text-transform:uppercase; font-weight:600; font-family:'Space Grotesk',sans-serif; }
+  .v2h-micro { font-size:12px; color:rgba(150,190,255,.28); letter-spacing:.05em; font-family:'Space Grotesk',sans-serif; }
+
+  /* network SVG decoration */
+  .v2h-network { position:relative; z-index:1; width:100%; max-width:1160px; margin:-10px auto 0; pointer-events:none; opacity:.85; }
+  .v2h-network svg { display:block; width:100%; height:auto; }
+
+  /* ---- Problem section: LIGHT editorial ---- */
+  #problem {
+    background:#edf2fd !important;
+    color:#0d1a2e !important;
+    font-family:'Space Grotesk',system-ui,sans-serif !important;
+    padding:100px 0 !important;
+    overflow:visible !important;
+  }
+  #problem::after,
+  #problem > .blob { display:none !important; }
+  #problem.sec::before { background:none !important; height:0 !important; }
+
+  /* problem inner */
+  .v2p-inner { display:flex; flex-direction:column; gap:56px; }
+  .v2p-top { display:flex; align-items:flex-start; gap:52px; }
+  .v2p-left { flex:1; }
+  .v2p-lbl { font-size:10.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#2b80ff; margin-bottom:22px; display:block; font-family:'Space Grotesk',sans-serif; }
+  .v2p-h2 { font-size:clamp(28px,3.8vw,50px); font-weight:700; line-height:1.12; letter-spacing:-.028em; color:#0d1a2e; margin-bottom:22px; font-family:'Space Grotesk',sans-serif; }
+  .v2p-accent-txt { color:#2b80ff; -webkit-text-fill-color:#2b80ff !important; background:none !important; }
+  .v2p-body { font-size:16px; line-height:1.78; color:#4a617c; font-family:'Space Grotesk',sans-serif; max-width:520px; }
+
+  /* stat cards */
+  .v2p-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; border-radius:24px; overflow:hidden; box-shadow:0 4px 48px rgba(43,128,255,.1),0 1px 8px rgba(0,0,0,.05); }
+  .v2p-sc { background:#fff; padding:46px 38px 42px; position:relative; overflow:hidden; }
+  .v2p-sc::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,#2b80ff,#00c4a8); }
+  .v2p-sc::after { content:''; position:absolute; bottom:-30px; right:-30px; width:200px; height:200px; background:radial-gradient(ellipse,rgba(43,128,255,.05) 0%,transparent 70%); pointer-events:none; }
+  .v2p-sc-n { display:block; font-size:clamp(46px,5.8vw,76px); font-weight:700; letter-spacing:-.045em; line-height:.88; color:#2b80ff; font-family:'Space Grotesk',sans-serif; margin-bottom:8px; }
+  .v2p-sc-u { display:block; font-size:19px; font-weight:600; color:#0d1a2e; font-family:'Space Grotesk',sans-serif; margin-bottom:16px; }
+  .v2p-sc-d { font-size:13.5px; line-height:1.62; color:#5a7090; font-family:'Space Grotesk',sans-serif; }
+
   </style>
 </head>
 <body>
@@ -1480,194 +1716,121 @@
   </div>
 </nav>
 
-<!-- ══════════════════ HERO V2 — CENTERED + INFOGRAPHIC ══════════════════ -->
+<!-- ══════════════════ HERO V2 — CENTERED EDITORIAL ══════════════════════ -->
 <section id="hero-v2">
-  <div class="hero-base"></div>
-  <div class="hero-grid"></div>
-  <div class="blob h2-glow"></div>
-  <div class="blob h2-glow-teal"></div>
+  <!-- bg layers -->
+  <div class="v2hbg-glow1"></div>
+  <div class="v2hbg-glow2"></div>
+  <div class="v2hbg-grid"></div>
 
-  <div class="wrap">
-    <div class="h2-content">
+  <!-- centered text block -->
+  <div class="v2h-center">
 
-      <!-- Network chips — each exchange as its own glowing tag -->
-      <div class="nw-chips">
-        <span class="nw-chip nw-cw"><span class="nw-chip-dot"></span>CommonWell</span>
-        <span class="nw-chip nw-cq"><span class="nw-chip-dot"></span>Carequality</span>
-        <span class="nw-chip nw-tf"><span class="nw-chip-dot"></span>TEFCA</span>
-      </div>
-
-      <h1 class="h2-h">
-        From fragmented<br>
-        <em class="gt">records</em> to a clear<br>
-        patient timeline<br>
-        — in <em class="gt">seconds.</em>
-      </h1>
-
-      <p class="h2-sub">
-        Pull a new patient's full medical history from CommonWell, Carequality, and TEFCA. Organized, deduplicated, and ready for review before the first appointment.
-      </p>
-
-      <div class="h2-btns">
-        <a href="#demo" class="btn btn-p btn-lg">See It In Action&nbsp;&nbsp;→</a>
-        <a href="#demo" class="btn btn-g btn-lg">Talk to Sales</a>
-      </div>
-
-      <p class="h2-micro">No EMR integration required. HIPAA-compliant. Works alongside your existing workflow.</p>
-
-      <div class="h2-sep"></div>
-      <div class="h2-features">
-        <div class="h2-feat">
-          <svg class="hf-icon" width="15" height="12" viewBox="0 0 15 12" fill="none">
-            <path d="M1 2h8M1 5.5h6M1 9h4" stroke="rgba(95,164,255,.72)" stroke-width="1.45" stroke-linecap="round"/>
-            <path d="M10.5 3.5L13.5 5.5L10.5 7.5" stroke="rgba(95,164,255,.95)" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="h2-feat-title">Retrieve Records from HIEs</span>
-        </div>
-        <div class="h2-feat">
-          <svg class="hf-icon teal" width="14" height="11" viewBox="0 0 14 11" fill="none">
-            <path d="M1 1.5h12" stroke="rgba(0,196,168,.55)" stroke-width="1.45" stroke-linecap="round"/>
-            <path d="M3 5.5h8" stroke="rgba(0,196,168,.78)" stroke-width="1.45" stroke-linecap="round"/>
-            <path d="M5.5 9.5h3" stroke="rgba(0,196,168,.98)" stroke-width="1.45" stroke-linecap="round"/>
-          </svg>
-          <span class="h2-feat-title">Organize and Deduplicate Data</span>
-        </div>
-        <div class="h2-feat">
-          <svg class="hf-icon" width="15" height="12" viewBox="0 0 15 12" fill="none">
-            <rect x="1" y="1" width="13" height="8" rx="1" stroke="rgba(95,164,255,.85)" stroke-width="1.45"/>
-            <path d="M5 11h5M7.5 9v2" stroke="rgba(95,164,255,.7)" stroke-width="1.45" stroke-linecap="round"/>
-          </svg>
-          <span class="h2-feat-title">Present a Usable Clinical View</span>
-        </div>
-      </div>
-
+    <!-- network tag -->
+    <div class="v2h-tag">
+      <span class="v2h-tag-dot"></span>
+      CommonWell &nbsp;·&nbsp; Carequality &nbsp;·&nbsp; TEFCA
     </div>
 
-    <!-- ====== Infographic ====== -->
-    <div class="infographic">
-      <!-- Connecting lines -->
-      <svg class="connectors" viewBox="0 0 1100 460" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="lineL" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(95,164,255,0)"/>
-            <stop offset="55%" stop-color="rgba(43,128,255,0.5)"/>
-            <stop offset="100%" stop-color="rgba(95,164,255,0.9)"/>
-          </linearGradient>
-          <linearGradient id="lineR" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(0,196,168,0.85)"/>
-            <stop offset="45%" stop-color="rgba(0,196,168,0.5)"/>
-            <stop offset="100%" stop-color="rgba(0,196,168,0)"/>
-          </linearGradient>
-        </defs>
-        <path class="conn-line" d="M250 100 Q380 100 430 200" stroke="url(#lineL)" stroke-width="1.5" fill="none"/>
-        <path class="conn-line" d="M250 360 Q380 360 430 260" stroke="url(#lineL)" stroke-width="1.5" fill="none"/>
-        <path class="conn-line" d="M850 100 Q720 100 670 200" stroke="url(#lineR)" stroke-width="1.5" fill="none"/>
-        <path class="conn-line" d="M850 360 Q720 360 670 260" stroke="url(#lineR)" stroke-width="1.5" fill="none"/>
-      </svg>
+    <!-- headline -->
+    <h1 class="v2h-h1">
+      From fragmented<br>
+      <em class="v2h-em">records</em> to a clear<br>
+      patient timeline<br>
+      — in <em class="v2h-em">seconds.</em>
+    </h1>
 
-      <!-- Top Left: HIE Network -->
-      <div class="info-card info-tl">
-        <div class="info-card-h">HIE Network</div>
-        <div class="info-row">
-          <span class="info-dot"></span> CommonWell
-          <span class="info-r-tag">live</span>
-        </div>
-        <div class="info-row">
-          <span class="info-dot"></span> Carequality
-          <span class="info-r-tag">live</span>
-        </div>
-        <div class="info-row">
-          <span class="info-dot"></span> TEFCA
-          <span class="info-r-tag">live</span>
-        </div>
+    <!-- subtitle -->
+    <p class="v2h-sub">Pull a new patient's full medical history from CommonWell, Carequality, and TEFCA. Organized, deduplicated, and ready for review before the first appointment.</p>
+
+    <!-- CTAs -->
+    <div class="v2h-ctas">
+      <a href="#demo" class="btn btn-p btn-lg">See It In Action&nbsp;&nbsp;→</a>
+      <a href="#demo" class="btn btn-g btn-lg">Talk to Sales</a>
+    </div>
+
+    <!-- inline stats bar -->
+    <div class="v2h-statsbar">
+      <div class="v2h-sb-item">
+        <span class="v2h-sb-n">&lt;&nbsp;1 min</span>
+        <span class="v2h-sb-l">Record Retrieval</span>
       </div>
-
-      <!-- Bottom Left: Patient Lookup -->
-      <div class="info-card info-bl">
-        <div class="info-card-h">Patient Lookup</div>
-        <div class="pl-row">
-          <div class="pl-av">SM</div>
-          <div class="pl-meta">
-            <div class="pl-name">Sarah Mitchell</div>
-            <div class="pl-dob">Apr 17, 1982</div>
-          </div>
-        </div>
-        <button class="info-btn">Search Records →</button>
+      <div class="v2h-sb-item">
+        <span class="v2h-sb-n">3</span>
+        <span class="v2h-sb-l">HIE Networks</span>
       </div>
-
-      <!-- Top Right: Records Retrieved -->
-      <div class="info-card info-tr">
-        <div class="info-card-h">Records Retrieved</div>
-        <div class="info-big-num"><span class="num-gt">50</span> records</div>
-        <div class="info-bar-track">
-          <div class="info-bar-seg" style="width:48%;background:var(--bluel);opacity:.8"></div>
-          <div class="info-bar-seg" style="width:32%;background:var(--teal);opacity:.8"></div>
-          <div class="info-bar-seg" style="width:20%;background:#b794f4;opacity:.8"></div>
-        </div>
-        <div class="info-pills">
-          <span class="info-pill info-pill-blue">12 labs</span>
-          <span class="info-pill info-pill-teal">8 imaging</span>
-          <span class="info-pill info-pill-purple">6 path.</span>
-        </div>
+      <div class="v2h-sb-item">
+        <span class="v2h-sb-n">HIPAA</span>
+        <span class="v2h-sb-l">Compliant by default</span>
       </div>
-
-      <!-- Bottom Right: PDF Export -->
-      <div class="info-card info-br">
-        <div class="info-card-h">Consolidated PDF</div>
-        <div class="info-pdf-file">
-          <div class="info-pdf-icon">PDF</div>
-          <div>
-            <div class="info-pdf-name">S.M._Records_2024.pdf</div>
-            <div class="info-pdf-size">47 pages &nbsp;·&nbsp; 2.3 MB</div>
-          </div>
-        </div>
-        <button class="info-btn info-btn-teal">↓ Download PDF</button>
-      </div>
-
-      <!-- Central Orb -->
-      <div class="orb-wrap">
-        <div class="orb-glow-bloom"></div>
-        <svg class="orb-svg" viewBox="-110 -110 220 220">
-          <defs>
-            <linearGradient id="orbStroke" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#5fa4ff"/>
-              <stop offset="50%" stop-color="#3a8eff"/>
-              <stop offset="100%" stop-color="#00c4a8"/>
-            </linearGradient>
-            <radialGradient id="orbInner">
-              <stop offset="0%" stop-color="rgba(95,164,255,0.6)"/>
-              <stop offset="50%" stop-color="rgba(43,128,255,0.18)"/>
-              <stop offset="100%" stop-color="rgba(43,128,255,0)"/>
-            </radialGradient>
-          </defs>
-          <!-- inner glow fill -->
-          <circle r="92" fill="url(#orbInner)"/>
-          <!-- outer rings -->
-          <circle r="100" stroke="rgba(95,164,255,0.18)" stroke-width="1" fill="none"/>
-          <circle r="100" stroke="url(#orbStroke)" stroke-width="1.5" fill="none" opacity="0.55"/>
-          <!-- rotating longitude ellipses (creates 3D sphere feel) -->
-          <g class="orb-rotor">
-            <ellipse rx="100" ry="20" stroke="url(#orbStroke)" stroke-width="1" fill="none" opacity="0.55"/>
-            <ellipse rx="97" ry="38" stroke="url(#orbStroke)" stroke-width="1" fill="none" opacity="0.45"/>
-            <ellipse rx="92" ry="58" stroke="url(#orbStroke)" stroke-width="1" fill="none" opacity="0.42"/>
-            <ellipse rx="82" ry="78" stroke="url(#orbStroke)" stroke-width="1" fill="none" opacity="0.4"/>
-            <ellipse rx="58" ry="95" stroke="url(#orbStroke)" stroke-width="1" fill="none" opacity="0.35"/>
-            <ellipse rx="20" ry="100" stroke="url(#orbStroke)" stroke-width="1" fill="none" opacity="0.3"/>
-          </g>
-          <!-- counter-rotating equators -->
-          <g class="orb-counter-rotor">
-            <ellipse rx="90" ry="14" stroke="url(#orbStroke)" stroke-width="1" fill="none" opacity="0.5" transform="rotate(15)"/>
-            <ellipse rx="78" ry="10" stroke="url(#orbStroke)" stroke-width="0.8" fill="none" opacity="0.4" transform="rotate(-25)"/>
-          </g>
-          <!-- bright core -->
-          <circle r="16" fill="rgba(95,164,255,0.3)"/>
-          <circle r="6" fill="#7eb3ff">
-            <animate attributeName="r" values="6;9;6" dur="3s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.85;1;0.85" dur="3s" repeatCount="indefinite"/>
-          </circle>
-        </svg>
+      <div class="v2h-sb-item">
+        <span class="v2h-sb-n">1 week</span>
+        <span class="v2h-sb-l">Average go-live</span>
       </div>
     </div>
+
+    <p class="v2h-micro">No EMR integration required. Works alongside your existing workflow.</p>
+  </div>
+
+  <!-- decorative data-network SVG at bottom -->
+  <div class="v2h-network">
+    <svg viewBox="0 0 1140 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="v2netLine" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="rgba(43,128,255,0)"/>
+          <stop offset="30%" stop-color="rgba(95,164,255,.4)"/>
+          <stop offset="70%" stop-color="rgba(0,196,168,.4)"/>
+          <stop offset="100%" stop-color="rgba(0,196,168,0)"/>
+        </linearGradient>
+        <filter id="v2nodeGlow">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+          <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+        </filter>
+      </defs>
+      <!-- main horizontal data flow line -->
+      <line x1="0" y1="90" x2="1140" y2="90" stroke="url(#v2netLine)" stroke-width="1.2"/>
+      <!-- vertical stems -->
+      <line x1="160" y1="36" x2="160" y2="144" stroke="rgba(95,164,255,.22)" stroke-width="1" stroke-dasharray="3 4"/>
+      <line x1="340" y1="28" x2="340" y2="152" stroke="rgba(95,164,255,.18)" stroke-width="1" stroke-dasharray="3 4"/>
+      <line x1="570" y1="8"  x2="570" y2="172" stroke="rgba(95,164,255,.25)" stroke-width="1.2" stroke-dasharray="3 4"/>
+      <line x1="800" y1="28" x2="800" y2="152" stroke="rgba(0,196,168,.18)" stroke-width="1" stroke-dasharray="3 4"/>
+      <line x1="980" y1="36" x2="980" y2="144" stroke="rgba(0,196,168,.22)" stroke-width="1" stroke-dasharray="3 4"/>
+      <!-- curved paths between nodes -->
+      <path d="M160 90 Q250 55 340 90" stroke="rgba(95,164,255,.28)" stroke-width="1.2" fill="none"/>
+      <path d="M340 90 Q455 128 570 90" stroke="rgba(95,164,255,.22)" stroke-width="1.2" fill="none"/>
+      <path d="M570 90 Q685 52 800 90" stroke="rgba(0,196,168,.22)" stroke-width="1.2" fill="none"/>
+      <path d="M800 90 Q890 125 980 90" stroke="rgba(0,196,168,.28)" stroke-width="1.2" fill="none"/>
+      <!-- node halos -->
+      <circle cx="160" cy="90" r="28" fill="rgba(95,164,255,.05)"/>
+      <circle cx="340" cy="90" r="22" fill="rgba(95,164,255,.04)"/>
+      <circle cx="570" cy="90" r="44" fill="rgba(95,164,255,.07)"/>
+      <circle cx="800" cy="90" r="22" fill="rgba(0,196,168,.04)"/>
+      <circle cx="980" cy="90" r="28" fill="rgba(0,196,168,.05)"/>
+      <!-- main nodes -->
+      <circle cx="160" cy="90" r="7"  fill="rgba(95,164,255,.25)" stroke="rgba(95,164,255,.65)" stroke-width="1.5" filter="url(#v2nodeGlow)"/>
+      <circle cx="340" cy="90" r="6"  fill="rgba(95,164,255,.2)"  stroke="rgba(95,164,255,.55)" stroke-width="1.5"/>
+      <circle cx="570" cy="90" r="13" fill="rgba(95,164,255,.3)"  stroke="rgba(95,164,255,.95)" stroke-width="2" filter="url(#v2nodeGlow)"/>
+      <circle cx="800" cy="90" r="6"  fill="rgba(0,196,168,.2)"   stroke="rgba(0,196,168,.55)"  stroke-width="1.5"/>
+      <circle cx="980" cy="90" r="7"  fill="rgba(0,196,168,.25)"  stroke="rgba(0,196,168,.65)"  stroke-width="1.5" filter="url(#v2nodeGlow)"/>
+      <!-- satellite nodes -->
+      <circle cx="160" cy="46" r="4" fill="rgba(95,164,255,.3)" stroke="rgba(95,164,255,.55)" stroke-width="1"/>
+      <circle cx="160" cy="134" r="4" fill="rgba(95,164,255,.22)" stroke="rgba(95,164,255,.42)" stroke-width="1"/>
+      <circle cx="570" cy="26" r="5" fill="rgba(95,164,255,.28)" stroke="rgba(95,164,255,.62)" stroke-width="1.2"/>
+      <circle cx="570" cy="154" r="5" fill="rgba(95,164,255,.22)" stroke="rgba(95,164,255,.48)" stroke-width="1.2"/>
+      <circle cx="980" cy="46" r="4" fill="rgba(0,196,168,.3)" stroke="rgba(0,196,168,.55)" stroke-width="1"/>
+      <circle cx="980" cy="134" r="4" fill="rgba(0,196,168,.22)" stroke="rgba(0,196,168,.42)" stroke-width="1"/>
+      <!-- labels -->
+      <text x="160" y="20" text-anchor="middle" font-family="Space Grotesk,system-ui,sans-serif" font-size="9" fill="rgba(95,164,255,.55)" letter-spacing=".1em" font-weight="600">COMMONWELL</text>
+      <text x="340" y="16" text-anchor="middle" font-family="Space Grotesk,system-ui,sans-serif" font-size="9" fill="rgba(95,164,255,.48)" letter-spacing=".1em" font-weight="600">CAREQUALITY</text>
+      <text x="570" y="8"  text-anchor="middle" font-family="Space Grotesk,system-ui,sans-serif" font-size="11" fill="rgba(140,185,255,.8)" letter-spacing=".07em" font-weight="700">MEDBOOK360</text>
+      <text x="800" y="16" text-anchor="middle" font-family="Space Grotesk,system-ui,sans-serif" font-size="9" fill="rgba(0,196,168,.52)" letter-spacing=".1em" font-weight="600">TEFCA</text>
+      <text x="980" y="20" text-anchor="middle" font-family="Space Grotesk,system-ui,sans-serif" font-size="9" fill="rgba(0,196,168,.5)" letter-spacing=".1em" font-weight="600">CLINIC EMR</text>
+      <!-- core pulse -->
+      <circle cx="570" cy="90" r="5" fill="#7eb3ff">
+        <animate attributeName="r" values="5;9;5" dur="2.6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0.6;1" dur="2.6s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
   </div>
 </section>
 
@@ -1733,29 +1896,37 @@
 </section>
 
 <!-- ══════════════════ PROBLEM ══════════════════════════ -->
-<section class="sec altbg" id="problem">
-  <div class="blob prob-blob"></div>
+<section class="sec" id="problem">
   <div class="wrap">
-    <div class="prob-in">
-      <div>
-        <span class="lbl">The Reality</span>
-        <h2 class="prob-h">The new patient is on the schedule next Tuesday.<br><span class="gt">The records still aren't here.</span></h2>
-        <p class="prob-body">Faxes go unanswered for 2 to 7 days. Staff burns hours chasing callbacks. Patients show up with a stack of paper, or worse, with nothing. Scheduling slips. Revenue slips with it.</p>
-      </div>
-      <div class="stat-stack">
-        <div class="stat-card">
-          <div class="sn">2–7 days</div>
-          <div class="sd">Average wait time for faxed medical record requests</div>
-        </div>
-        <div class="stat-card">
-          <div class="sn">~30%</div>
-          <div class="sd">Of fax requests require at least one follow-up call to complete</div>
-        </div>
-        <div class="stat-card">
-          <div class="sph">$[X] / week</div>
-          <div class="sd">In unbillable new-patient coordinator time — client to validate</div>
+    <div class="v2p-inner">
+
+      <!-- top: headline + body -->
+      <div class="v2p-top">
+        <div class="v2p-left">
+          <span class="v2p-lbl">The Reality</span>
+          <h2 class="v2p-h2">The new patient is on the schedule next Tuesday.<br><span class="v2p-accent-txt">The records still aren't here.</span></h2>
+          <p class="v2p-body">Faxes go unanswered for 2 to 7 days. Staff burns hours chasing callbacks. Patients show up with a stack of paper, or worse, with nothing. Scheduling slips. Revenue slips with it.</p>
         </div>
       </div>
+
+      <!-- stat cards -->
+      <div class="v2p-stats">
+        <div class="v2p-sc">
+          <span class="v2p-sc-n">2–7</span>
+          <span class="v2p-sc-u">days</span>
+          <p class="v2p-sc-d">Average wait time for faxed medical record requests</p>
+        </div>
+        <div class="v2p-sc">
+          <span class="v2p-sc-n">~30%</span>
+          <p class="v2p-sc-d">Of fax requests require at least one follow-up call to complete</p>
+        </div>
+        <div class="v2p-sc">
+          <span class="v2p-sc-n">$[X]</span>
+          <span class="v2p-sc-u">/ week</span>
+          <p class="v2p-sc-d">In unbillable new-patient coordinator time — client to validate</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

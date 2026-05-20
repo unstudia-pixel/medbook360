@@ -765,7 +765,7 @@
     justify-content:center;
     padding:120px 0 80px;position:relative;overflow:hidden;
   }
-  #hero-v2 > .wrap{display:grid;grid-template-columns:minmax(0,480px) minmax(0,1fr);align-items:center;gap:52px;width:100%}
+  #hero-v2 > .wrap{display:grid;grid-template-columns:46% 1fr;align-items:center;gap:52px;width:100%}
   .h2-glow{
     width:1000px;height:1000px;
     background:radial-gradient(ellipse,rgba(30,100,255,.62) 0%,rgba(43,128,255,.28) 40%,transparent 70%);
@@ -797,13 +797,24 @@
     position:relative;min-width:0;
     margin:0;height:460px;z-index:2;overflow:hidden;
   }
-  /* Split layout: hide left cards, contain right cards */
-  #hero-v2 .info-tl,
-  #hero-v2 .info-bl{display:none}
-  #hero-v2 .info-card{width:220px;padding:14px 16px}
+  /* All 4 infographic cards — shared glassmorphism */
+  #hero-v2 .info-card{
+    width:200px;padding:13px 14px;
+    background:rgba(6,14,38,.52);
+    backdrop-filter:blur(32px) saturate(220%) brightness(1.08);
+    -webkit-backdrop-filter:blur(32px) saturate(220%) brightness(1.08);
+    border:1px solid rgba(255,255,255,.11);
+    border-top-color:rgba(255,255,255,.22);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.12),
+      inset 1px 0 0 rgba(255,255,255,.04),
+      0 24px 64px rgba(0,0,0,.55),
+      0 0 0 1px rgba(43,128,255,.1);
+  }
+  #hero-v2 .info-tl{top:20px;left:0}
+  #hero-v2 .info-bl{bottom:20px;left:0}
   #hero-v2 .info-tr{top:20px;right:0}
   #hero-v2 .info-br{bottom:20px;right:0}
-  #hero-v2 .orb-wrap{left:30%;transform:translate(-50%,-50%)}
   .connectors{
     position:absolute;inset:0;width:100%;height:100%;
     pointer-events:none;z-index:1;
@@ -867,19 +878,6 @@
   }
   .info-btn-teal{background:rgba(0,196,168,.12);border-color:rgba(0,196,168,.3);color:var(--teal)}
 
-  /* Glassmorphism override for right-side cards */
-  .info-tr,.info-br{
-    background:rgba(6,14,38,.52);
-    backdrop-filter:blur(32px) saturate(220%) brightness(1.08);
-    -webkit-backdrop-filter:blur(32px) saturate(220%) brightness(1.08);
-    border:1px solid rgba(255,255,255,.11);
-    border-top-color:rgba(255,255,255,.22);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.12),
-      inset 1px 0 0 rgba(255,255,255,.04),
-      0 24px 64px rgba(0,0,0,.55),
-      0 0 0 1px rgba(43,128,255,.1);
-  }
 
   .info-big-num{
     font-size:32px;font-weight:300;margin-bottom:6px;
@@ -985,7 +983,7 @@
   /* ═══════════════════════════════════════════════════════
      RESPONSIVE
   ═══════════════════════════════════════════════════════ */
-  @media(max-width:1100px){
+  @media(max-width:960px){
     #hero-v2{padding:110px 0 60px;min-height:auto}
     #hero-v2 > .wrap{grid-template-columns:1fr;gap:40px}
     .h2-content{text-align:center}

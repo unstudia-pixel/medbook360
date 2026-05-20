@@ -1847,17 +1847,121 @@
   }
   .v2sol-tags--teal .v2sol-tag { border-color:rgba(0,196,168,.2); color:rgba(0,196,168,.6); background:rgba(0,196,168,.04); }
 
-  /* ── V2 Features: force dark ── */
-  #features .feat-hd h2,
-  #features .fc-t { color:#fff !important; font-family:'Space Grotesk',system-ui,sans-serif !important; }
-  #features .feat-hd p,
-  #features .fc-b  { color:rgba(185,215,255,.55) !important; font-family:'Space Grotesk',system-ui,sans-serif !important; }
-  #features .feat-card {
-    background:rgba(43,128,255,.05) !important;
-    border:1px solid rgba(95,164,255,.13) !important;
-    box-shadow:inset 0 1px 0 rgba(95,164,255,.07), 0 12px 40px rgba(0,0,0,.35) !important;
+  /* ── V2 Features: two-column layout ── */
+  #features { font-family:'Space Grotesk',system-ui,sans-serif !important; }
+  .feat-grid { display:none !important; }
+  .feat-hd   { display:none !important; }
+
+  .v2feat-layout {
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:72px;
+    align-items:start;
+    position:relative;
+    z-index:1;
   }
-  #features .feat-card:hover { border-color:rgba(95,164,255,.28) !important; }
+  .v2feat-left { position:sticky; top:100px; }
+  .v2feat-h2 {
+    font-size:clamp(32px,3.8vw,52px); font-weight:700; letter-spacing:-.03em;
+    line-height:1.08; color:#fff;
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    margin:12px 0 18px;
+  }
+  .v2feat-accent {
+    background:linear-gradient(90deg,#5fa4ff 0%,#00c4a8 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .v2feat-sub { font-size:15px; color:rgba(185,215,255,.55); line-height:1.72; margin-bottom:28px; }
+  .v2feat-more { font-size:13px; color:rgba(185,215,255,.38); line-height:1.65; }
+  .v2feat-more a { color:rgba(95,164,255,.65); }
+
+  .v2feat-rows { display:flex; flex-direction:column; }
+  .v2feat-row {
+    display:grid;
+    grid-template-columns:48px 1fr;
+    gap:20px;
+    align-items:center;
+    padding:24px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    transition:background .2s;
+    border-radius:4px;
+  }
+  .v2feat-row:first-child { border-top:1px solid rgba(255,255,255,.06); }
+  .v2feat-row:hover { background:rgba(95,164,255,.025); }
+  .v2feat-icon {
+    width:48px; height:48px; border-radius:13px;
+    background:rgba(43,128,255,.08); border:1px solid rgba(95,164,255,.18);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .v2feat-icon--teal { background:rgba(0,196,168,.07); border-color:rgba(0,196,168,.18); }
+  .v2feat-title {
+    font-size:15px; font-weight:600; color:#fff; margin-bottom:4px;
+    font-family:'Space Grotesk',system-ui,sans-serif;
+  }
+  .v2feat-desc { font-size:13.5px; color:rgba(185,215,255,.5); line-height:1.65; }
+
+  /* ── V2 Personas: bento grid ── */
+  #personas { font-family:'Space Grotesk',system-ui,sans-serif !important; }
+  .per-hd { display:none !important; }
+
+  .v2per-hd { text-align:left; margin-bottom:52px; position:relative; z-index:1; }
+  .v2per-h2 {
+    font-size:clamp(32px,4vw,56px); font-weight:700; letter-spacing:-.03em;
+    line-height:1.06; color:#fff;
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    margin:12px 0 16px;
+  }
+  .v2per-sub { font-size:15px; color:rgba(185,215,255,.55); line-height:1.7; max-width:520px; }
+
+  .v2per-bento {
+    display:grid;
+    grid-template-columns:3fr 2fr;
+    gap:16px;
+    position:relative; z-index:1;
+  }
+  .v2per-card {
+    background:rgba(43,128,255,.05);
+    border:1px solid rgba(95,164,255,.13);
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+  }
+  .v2per-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg,#2b80ff,#00c4a8);
+  }
+  .v2per-card--main { display:flex; flex-direction:column; }
+  .v2per-illus { width:100%; flex-shrink:0; line-height:0; }
+  .v2per-illus svg { display:block; width:100%; height:auto; }
+  .v2per-card-body { padding:28px 32px 36px; flex:1; }
+
+  .v2per-stack { display:flex; flex-direction:column; gap:16px; }
+  .v2per-card--sm { padding:32px 28px; display:flex; flex-direction:column; justify-content:flex-end; min-height:200px; }
+  .v2per-card--teal {
+    background:rgba(0,196,168,.04) !important;
+    border-color:rgba(0,196,168,.13) !important;
+  }
+  .v2per-card--teal::before { background:linear-gradient(90deg,#00c4a8,#2b80ff); }
+
+  .v2per-badge {
+    font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:rgba(95,164,255,.65);
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    margin-bottom:12px;
+  }
+  .v2per-badge--teal { color:rgba(0,196,168,.65); }
+  .v2per-card-h {
+    font-size:22px; font-weight:700; letter-spacing:-.025em;
+    color:#fff; line-height:1.2; margin-bottom:10px;
+    font-family:'Space Grotesk',system-ui,sans-serif;
+  }
+  .v2per-card-b { font-size:13.5px; color:rgba(185,215,255,.52); line-height:1.72; }
+
+  .v2per-bg-svg {
+    position:absolute; bottom:20px; right:16px;
+    width:200px; height:80px;
+    pointer-events:none; opacity:1;
+  }
 
   </style>
 </head>
@@ -2244,57 +2348,76 @@
 <section class="sec altbg" id="features">
   <div class="blob feat-blob"></div>
   <div class="wrap">
-    <div class="feat-hd">
-      <span class="lbl">Phase 1 Key Features</span>
-      <h2>Solutions for <span class="gt">Clinicians</span></h2>
-      <p>Built around real workflows, not hypothetical use cases.</p>
-    </div>
-    <div class="feat-grid">
-      <div class="feat-card">
-        <div class="fc-icon">
-          <svg width="32" height="32" viewBox="0 0 22 22" fill="none">
-            <circle cx="11" cy="8" r="4" stroke="#5fa4ff" stroke-width="1.5"/>
-            <path d="M3 19c0-3.866 3.582-7 8-7s8 3.134 8 7" stroke="#5fa4ff" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M16 5l1.5 1.5L19 5" stroke="#00c4a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="fc-t">Unified Patient Profiles</div>
-        <p class="fc-b">Consolidated profiles from all networks.</p>
+    <div class="v2feat-layout">
+
+      <!-- Left: heading block -->
+      <div class="v2feat-left">
+        <span class="lbl">Phase 1 Key Features</span>
+        <h2 class="v2feat-h2">Solutions for<br><span class="v2feat-accent">Clinicians</span></h2>
+        <p class="v2feat-sub">Built around real workflows, not hypothetical use cases.</p>
+        <p class="v2feat-more">And more — <a href="#demo">PDF export, document upload, reciprocity tracking, and audit logging.</a></p>
       </div>
-      <div class="feat-card">
-        <div class="fc-icon">
-          <svg width="32" height="32" viewBox="0 0 22 22" fill="none">
-            <path d="M3 6h16M3 11h11M3 16h8" stroke="#5fa4ff" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="18" cy="16" r="3.5" stroke="#00c4a8" stroke-width="1.3"/>
-            <path d="M16.5 16l1 1 2-2" stroke="#00c4a8" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+
+      <!-- Right: feature list rows -->
+      <div class="v2feat-rows">
+
+        <div class="v2feat-row">
+          <div class="v2feat-icon">
+            <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+              <circle cx="11" cy="8" r="4" stroke="rgba(95,164,255,.9)" stroke-width="1.5"/>
+              <path d="M3 19c0-3.866 3.582-7 8-7s8 3.134 8 7" stroke="rgba(95,164,255,.9)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M16 5l1.5 1.5L19 5" stroke="rgba(0,196,168,.9)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="v2feat-text">
+            <div class="v2feat-title">Unified Patient Profiles</div>
+            <div class="v2feat-desc">Consolidated profiles pulled from all connected networks into a single view.</div>
+          </div>
         </div>
-        <div class="fc-t">Longitudinal Timelines</div>
-        <p class="fc-b">Clear, chronological medical history.</p>
-      </div>
-      <div class="feat-card">
-        <div class="fc-icon">
-          <svg width="32" height="32" viewBox="0 0 22 22" fill="none">
-            <rect x="2" y="3" width="8" height="10" rx="1.8" stroke="#5fa4ff" stroke-width="1.4"/>
-            <rect x="12" y="3" width="8" height="10" rx="1.8" stroke="#5fa4ff" stroke-width="1.4"/>
-            <path d="M6 17h10M11 14v5" stroke="#00c4a8" stroke-width="1.4" stroke-linecap="round"/>
-          </svg>
+
+        <div class="v2feat-row">
+          <div class="v2feat-icon v2feat-icon--teal">
+            <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+              <path d="M3 6h16M3 11h11M3 16h8" stroke="rgba(0,196,168,.9)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="18" cy="16" r="3.5" stroke="rgba(0,196,168,.9)" stroke-width="1.3"/>
+              <path d="M16.5 16l1 1 2-2" stroke="rgba(0,196,168,.9)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="v2feat-text">
+            <div class="v2feat-title">Longitudinal Timelines</div>
+            <div class="v2feat-desc">Clear, chronological medical history sorted newest first across all record types.</div>
+          </div>
         </div>
-        <div class="fc-t">Intelligent Deduplication</div>
-        <p class="fc-b">Group and match identical records.</p>
-      </div>
-      <div class="feat-card">
-        <div class="fc-icon">
-          <svg width="32" height="32" viewBox="0 0 22 22" fill="none">
-            <path d="M11 3L4 6.5v5.5c0 4 2.8 7.5 7 8.8 4.2-1.3 7-4.8 7-8.8V6.5L11 3z" stroke="#5fa4ff" stroke-width="1.4" stroke-linejoin="round"/>
-            <path d="M11 10v3.5M11 15.5h.01" stroke="#00c4a8" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+
+        <div class="v2feat-row">
+          <div class="v2feat-icon">
+            <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+              <rect x="2" y="3" width="8" height="10" rx="1.8" stroke="rgba(95,164,255,.9)" stroke-width="1.4"/>
+              <rect x="12" y="3" width="8" height="10" rx="1.8" stroke="rgba(95,164,255,.9)" stroke-width="1.4"/>
+              <path d="M6 17h10M11 14v5" stroke="rgba(0,196,168,.9)" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="v2feat-text">
+            <div class="v2feat-title">Intelligent Deduplication</div>
+            <div class="v2feat-desc">Automatically group and match identical records across sources.</div>
+          </div>
         </div>
-        <div class="fc-t">Conflict Detection</div>
-        <p class="fc-b">Flag and highlight inconsistencies.</p>
-      </div>
-    </div>
-    <p class="feat-more">And more — <a href="#demo">PDF export, patient document upload, reciprocity tracking, and audit logging.</a></p>
+
+        <div class="v2feat-row">
+          <div class="v2feat-icon v2feat-icon--teal">
+            <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+              <path d="M11 3L4 6.5v5.5c0 4 2.8 7.5 7 8.8 4.2-1.3 7-4.8 7-8.8V6.5L11 3z" stroke="rgba(0,196,168,.9)" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M11 10v3.5M11 15.5h.01" stroke="rgba(95,164,255,.9)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="v2feat-text">
+            <div class="v2feat-title">Conflict Detection</div>
+            <div class="v2feat-desc">Flag and surface inconsistencies before they reach the provider.</div>
+          </div>
+        </div>
+
+      </div><!-- /v2feat-rows -->
+    </div><!-- /v2feat-layout -->
   </div>
 </section>
 
@@ -2302,12 +2425,111 @@
 <section class="sec" id="personas">
   <div class="blob per-blob"></div>
   <div class="wrap">
-    <div class="per-hd">
+    <div class="v2per-hd">
       <span class="lbl">Built for the People Who Actually Do the Work</span>
-      <h2>Designed around the coordinator's day,<br><span class="gt">not the EHR vendor's roadmap.</span></h2>
-      <p>Decision-makers sign the contract. Coordinators and providers determine whether it sticks.</p>
+      <h2 class="v2per-h2">Designed around the<br>coordinator's day.</h2>
+      <p class="v2per-sub">Decision-makers sign the contract. Coordinators and providers determine whether it sticks.</p>
     </div>
-    <div class="per-grid">
+    <div class="v2per-bento">
+
+      <!-- Big card: Coordinator -->
+      <div class="v2per-card v2per-card--main">
+        <div class="v2per-illus">
+          <svg viewBox="0 0 560 190" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="perIllusFade" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="60%" stop-color="transparent"/>
+                <stop offset="100%" stop-color="rgba(4,16,60,.95)"/>
+              </linearGradient>
+            </defs>
+            <!-- ambient glow -->
+            <ellipse cx="160" cy="95" rx="280" ry="140" fill="rgba(43,128,255,.055)"/>
+            <ellipse cx="460" cy="70" rx="160" ry="110" fill="rgba(0,196,168,.04)"/>
+            <!-- search bar -->
+            <rect x="36" y="30" width="260" height="32" rx="8" fill="rgba(255,255,255,.035)" stroke="rgba(95,164,255,.3)" stroke-width="1"/>
+            <circle cx="54" cy="46" r="6.5" stroke="rgba(95,164,255,.9)" stroke-width="1.6"/>
+            <line x1="59" y1="51" x2="64" y2="56" stroke="rgba(95,164,255,.9)" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="72" y="43" width="90" height="5" rx="2.5" fill="rgba(255,255,255,.1)"/>
+            <rect x="168" y="43" width="1.5" height="7" rx=".75" fill="rgba(95,164,255,.6)"/>
+            <!-- result rows -->
+            <rect x="36" y="76" width="260" height="16" rx="5" fill="rgba(255,255,255,.055)" stroke="rgba(255,255,255,.12)" stroke-width="1.1"/>
+            <rect x="36" y="97" width="260" height="16" rx="5" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1.1"/>
+            <rect x="36" y="118" width="260" height="16" rx="5" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1.1"/>
+            <rect x="36" y="139" width="260" height="16" rx="5" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.06)" stroke-width="1.1"/>
+            <!-- row dots -->
+            <rect x="46" y="81" width="6" height="6" rx="1.5" fill="rgba(95,164,255,.55)"/>
+            <rect x="46" y="102" width="6" height="6" rx="1.5" fill="rgba(95,164,255,.38)"/>
+            <rect x="46" y="123" width="6" height="6" rx="1.5" fill="rgba(95,164,255,.25)"/>
+            <rect x="46" y="144" width="6" height="6" rx="1.5" fill="rgba(95,164,255,.15)"/>
+            <!-- row text bars -->
+            <rect x="60" y="83" width="110" height="4" rx="2" fill="rgba(255,255,255,.18)"/>
+            <rect x="180" y="83" width="60" height="4" rx="2" fill="rgba(255,255,255,.07)"/>
+            <rect x="60" y="104" width="140" height="4" rx="2" fill="rgba(255,255,255,.13)"/>
+            <rect x="60" y="125" width="95" height="4" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="60" y="146" width="120" height="4" rx="2" fill="rgba(255,255,255,.07)"/>
+            <!-- teal checkmarks -->
+            <circle cx="284" cy="84" r="7" fill="rgba(0,196,168,.15)" stroke="rgba(0,196,168,.45)" stroke-width="1"/>
+            <path d="M281 84l2 2.5 4-4" stroke="rgba(0,196,168,.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="284" cy="105" r="7" fill="rgba(0,196,168,.1)" stroke="rgba(0,196,168,.32)" stroke-width="1"/>
+            <path d="M281 105l2 2.5 4-4" stroke="rgba(0,196,168,.7)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- HIE network nodes -->
+            <circle cx="430" cy="70" rx="42" ry="42" fill="none" stroke="rgba(43,128,255,.1)" stroke-width="1" stroke-dasharray="4 5"/>
+            <circle cx="430" cy="70" r="22" fill="rgba(43,128,255,.07)" stroke="rgba(43,128,255,.28)" stroke-width="1.2"/>
+            <circle cx="430" cy="70" r="8" fill="rgba(95,164,255,.65)"/>
+            <circle cx="510" cy="138" r="18" fill="rgba(0,196,168,.07)" stroke="rgba(0,196,168,.28)" stroke-width="1.1"/>
+            <circle cx="510" cy="138" r="7" fill="rgba(0,196,168,.65)"/>
+            <circle cx="524" cy="40" r="12" fill="rgba(43,128,255,.06)" stroke="rgba(43,128,255,.2)" stroke-width="1"/>
+            <circle cx="524" cy="40" r="4.5" fill="rgba(95,164,255,.5)"/>
+            <!-- connection lines -->
+            <line x1="300" y1="84" x2="406" y2="72" stroke="rgba(43,128,255,.3)" stroke-width="1" stroke-dasharray="3 3"/>
+            <line x1="300" y1="105" x2="492" y2="138" stroke="rgba(0,196,168,.22)" stroke-width="1" stroke-dasharray="3 3"/>
+            <!-- fade overlay -->
+            <rect x="0" y="0" width="560" height="190" fill="url(#perIllusFade)"/>
+          </svg>
+        </div>
+        <div class="v2per-card-body">
+          <div class="v2per-badge">For New Patient Coordinators</div>
+          <h3 class="v2per-card-h">No more juggling fax<br>confirmations.</h3>
+          <p class="v2per-card-b">Search, review, and export in one place. No phone tag, no lost callbacks, no chasing records that never arrive.</p>
+        </div>
+      </div>
+
+      <!-- Right stack -->
+      <div class="v2per-stack">
+
+        <!-- Clinic Ops -->
+        <div class="v2per-card v2per-card--sm">
+          <div class="v2per-badge">For Clinic Operations</div>
+          <h3 class="v2per-card-h">Days to<br>minutes.</h3>
+          <p class="v2per-card-b">Cut record-retrieval time and free your staff to focus on patients, not paperwork.</p>
+          <!-- subtle background speed lines -->
+          <svg class="v2per-bg-svg" viewBox="0 0 200 80" fill="none" aria-hidden="true">
+            <line x1="0" y1="20" x2="120" y2="20" stroke="rgba(95,164,255,.08)" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="0" y1="32" x2="160" y2="32" stroke="rgba(95,164,255,.06)" stroke-width="1" stroke-linecap="round"/>
+            <line x1="0" y1="44" x2="100" y2="44" stroke="rgba(95,164,255,.05)" stroke-width="1" stroke-linecap="round"/>
+            <circle cx="136" cy="20" r="6" fill="rgba(0,196,168,.15)" stroke="rgba(0,196,168,.45)" stroke-width="1.2"/>
+            <path d="M133 20l2 2.5 4-4" stroke="rgba(0,196,168,.85)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Providers -->
+        <div class="v2per-card v2per-card--sm v2per-card--teal">
+          <div class="v2per-badge v2per-badge--teal">For Providers</div>
+          <h3 class="v2per-card-h">Complete chart,<br>day one.</h3>
+          <p class="v2per-card-b">Walk into every first appointment with a full, organized history. Make clinical decisions from day one.</p>
+          <!-- subtle ECG line -->
+          <svg class="v2per-bg-svg" viewBox="0 0 200 80" fill="none" aria-hidden="true">
+            <path d="M0,40 L30,40 L33,36 L36,40 L40,40 L42,40 L44,18 L46,62 L48,40 L60,40 L62,34 L64,40 L120,40 L122,36 L124,44 L126,36 L128,40 L200,40" stroke="rgba(0,196,168,.18)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+
+      </div>
+    </div><!-- /v2per-bento -->
+
+    <!-- old per-grid placeholder — hidden -->
+    <div class="per-grid" style="display:none"></div>
+  </div>
+</section>
 
       <!-- Card 1 – Coordinator  (image top) -->
       <div class="per-card">

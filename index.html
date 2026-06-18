@@ -1369,6 +1369,56 @@
   .p1-title span{display:none;}
   .p1-body{font-size:11.5px;color:rgba(255,255,255,.78);line-height:1.5;}
 
+  /* ── Mobile nav ── */
+  .nav-burger{
+    display:none;flex-direction:column;justify-content:center;align-items:center;
+    gap:5px;width:38px;height:38px;background:none;border:none;cursor:pointer;
+    padding:4px;border-radius:8px;flex-shrink:0;
+  }
+  .nav-burger span{
+    display:block;width:22px;height:2px;border-radius:2px;
+    background:rgba(255,255,255,.75);transition:transform .25s ease,opacity .25s ease;
+  }
+  .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+  .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  .nav-drawer{
+    display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;
+    background:rgba(4,9,26,.97);backdrop-filter:blur(20px);
+    flex-direction:column;justify-content:center;align-items:center;gap:12px;
+    padding:80px 24px 48px;
+    opacity:0;transform:translateY(-8px);
+    transition:opacity .25s ease,transform .25s ease;
+    pointer-events:none;
+  }
+  .nav-drawer.open{
+    display:flex;opacity:1;transform:translateY(0);pointer-events:auto;
+  }
+  .nav-drawer-links{
+    list-style:none;display:flex;flex-direction:column;align-items:center;gap:0;width:100%;
+  }
+  .nav-drawer-links a{
+    display:block;width:100%;text-align:center;padding:16px 0;
+    font-size:20px;font-weight:600;color:rgba(255,255,255,.8);
+    border-bottom:1px solid rgba(255,255,255,.07);transition:color .15s;
+  }
+  .nav-drawer-links a:hover{color:#fff}
+  .nav-drawer-links li:first-child a{border-top:1px solid rgba(255,255,255,.07)}
+  .nav-drawer-btns{
+    display:flex;flex-direction:column;align-items:center;gap:12px;
+    width:100%;max-width:320px;margin-top:24px;
+  }
+  .nav-drawer-btns .nav-login,
+  .nav-drawer-btns .nav-cta{
+    width:100%;justify-content:center;font-size:15px;height:48px;border-radius:12px;
+  }
+
+  @media(max-width:768px){
+    .nav-links,.nav-r{display:none}
+    .nav-burger{display:flex}
+  }
+
   @media(max-width:960px){
     #hero-v2{padding:110px 0 60px;min-height:auto}
     #hero-v2 > .wrap{grid-template-columns:1fr;gap:40px}
@@ -1617,14 +1667,30 @@
       <li><a href="#">Home</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#solution">About</a></li>
-      <li><a href="#faq" class="nav-drop">Resources <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style="display:inline-block;vertical-align:middle;margin-left:2px"><path d="M1 1l4 4 4-4" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-r">
       <a href="#" class="nav-login">Login</a>
       <a href="#demo" class="nav-cta">See It In Action</a>
     </div>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<!-- Mobile nav drawer -->
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
+  <ul class="nav-drawer-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#solution">About</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-drawer-btns">
+    <a href="#" class="nav-login">Login</a>
+    <a href="#demo" class="nav-cta">See It In Action</a>
+  </div>
+</div>
 
 <!-- ══════════════════ HERO V2 - CENTERED + INFOGRAPHIC ══════════════════ -->
 <section id="hero-v2">
@@ -3036,6 +3102,35 @@
   }, { threshold: 0.25 });
 
   io.observe(stack);
+})();
+
+/* ─── MOBILE NAV ──────────────────────────────────────────── */
+(function(){
+  var burger = document.querySelector('.nav-burger');
+  var drawer = document.getElementById('nav-drawer');
+  if (!burger || !drawer) return;
+  function close(){
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  burger.addEventListener('click', function(){
+    var isOpen = drawer.classList.contains('open');
+    if (isOpen){ close(); return; }
+    burger.classList.add('open');
+    burger.setAttribute('aria-expanded','true');
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  });
+  drawer.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', close);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') close();
+  });
 })();
 
 /* ─── HERO HEADLINE STAGGERED REVEAL ──────────────────────── */
